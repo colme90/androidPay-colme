@@ -43,17 +43,17 @@ public class Constants {
     public static int getEntornoClave() {
         return entornoClave;
     }
-    public static void setEntornoClave(int entornoClave){
-        entornoClave=entornoClave;
+    public static void setEntornoClave(int entornoClave1){
+        entornoClave=entornoClave1;
     }
-    public static final int entornoClave = 0;
+    public static int entornoClave = 0;
 
     public static String getClavePublicaCustom() {
         return clavePublicaCustom;
     }
 
-    public static void setClavePublicaCustom(String clavePublicaCustom) {
-        Constants.clavePublicaCustom = clavePublicaCustom;
+    public static void setClavePublicaCustom(String clavePublicaCustom1) {
+        Constants.clavePublicaCustom = clavePublicaCustom1;
     }
 
     public static String clavePublicaCustom="";

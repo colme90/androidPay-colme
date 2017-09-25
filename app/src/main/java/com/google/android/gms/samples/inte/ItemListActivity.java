@@ -30,6 +30,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 /**
  * The launcher activity for Bikestore application. This activity hosts two fragments,
@@ -67,7 +68,7 @@ public class ItemListActivity extends BikestoreFragmentActivity
         //get the spinner from the xml.
         Spinner dropdown = (Spinner)findViewById(R.id.spinner1);
 //create a list of items for the spinner.
-        String[] items = new String[]{"Desa", "Inte", "Custom"};
+        String[] items = new String[]{"Inte", "Custom"};
 //create an adapter to describe how the items are displayed, adapters are used in several places in android.
 //There are multiple variations of this, but this is the basic variant.
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, items);
@@ -100,9 +101,12 @@ public class ItemListActivity extends BikestoreFragmentActivity
     public void onItemSelected(AdapterView<?> parent, View view,
                                int pos, long id) {
         Log.i("TEST","OPCION SELECCIONADA: " + pos);
-        if (pos==2) {
+        if (pos==1) {
+            if("".equals(((EditText) findViewById(R.id.textoClave)).getText().toString()))
+                Toast.makeText(this,"AVISO: NO HAS INTRODUCIDO CLAVE PUBLICA",Toast.LENGTH_LONG).show();
             Constants.setClavePublicaCustom(((EditText) findViewById(R.id.textoClave)).getText().toString());
         }
+
         Constants.setEntornoClave(pos);
 
 

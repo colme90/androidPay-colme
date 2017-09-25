@@ -19,6 +19,7 @@ package com.google.android.gms.samples.inte;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -239,11 +240,10 @@ public class CheckoutActivity extends BikestoreFragmentActivity implements
             String clavePublica = "";
 
             if(Constants.getEntornoClave()==0){
-                clavePublica = Constants.clavePublicaDesa;
-            }else if(Constants.getEntornoClave()==1){
                 clavePublica = Constants.clavePublicaInte;
-            }else{
-                clavePublica = Constants.clavePublicaCustom;
+            }else if(Constants.getEntornoClave()==1){
+                SharedPreferences pref1 = getSharedPreferences("clavesPublicas", 0);
+                clavePublica = pref1.getString("claveCustom", "");
             }
             Log.i(TAG,"ENTORNO: " + Constants.getEntornoClave()+" Clave Publica: " + clavePublica);
             maskedWalletRequest = WalletUtil.createMaskedWalletRequest(
